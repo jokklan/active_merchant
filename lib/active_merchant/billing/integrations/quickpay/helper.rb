@@ -5,6 +5,7 @@ module ActiveMerchant #:nodoc:
         class Helper < ActiveMerchant::Billing::Integrations::Helper
 
           def initialize(order, account, options = {})
+            md5secret options.delete(:credential2)
             super
             add_field('protocol', '3')
             add_field('msgtype', 'authorize')
@@ -58,8 +59,6 @@ module ActiveMerchant #:nodoc:
           mapping :description, 'description'
           mapping :ipaddress, 'ipaddress'
           mapping :testmode, 'testmode'
-
-          mapping :credential2, 'md5secret'
 
           mapping :customer, ''
           mapping :billing_address, {}
