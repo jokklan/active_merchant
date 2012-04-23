@@ -11,7 +11,7 @@ module ActiveMerchant #:nodoc:
             add_field('msgtype', 'authorize')
             add_field('language', 'da')
             add_field('autocapture', 0)
-            add_field('testmode', 0)
+            add_field('testmode', test? ? 1 : 0)
             add_field('ordernumber', format_order_number(order))
           end
               
